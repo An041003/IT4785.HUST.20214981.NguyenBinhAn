@@ -60,9 +60,9 @@ class MainActivity : AppCompatActivity() {
       val editMssv = dialogView.findViewById<EditText>(R.id.edit_mssv)
 
       AlertDialog.Builder(this)
-        .setTitle("Nhập thông tin sinh viên")
+        .setTitle("Enter student information")
         .setView(dialogView)
-        .setPositiveButton("Thêm") { _, _ ->
+        .setPositiveButton("OK") { _, _ ->
           val hoten = editHoten.text.toString()
           val mssv = editMssv.text.toString()
           if (hoten.isNotEmpty() && mssv.isNotEmpty()) {
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             Log.v("TAG", "$hoten: $mssv")
           }
         }
-        .setNegativeButton("Thoát", null)
+        .setNegativeButton("Cancel", null)
         .create()
         .show()
     }
@@ -108,25 +108,25 @@ class MainActivity : AppCompatActivity() {
     dialog.show()
   }
 
-  //Remove
+  //Delete
   private fun removeStudent(position: Int) {
     val currentStudent = students[position]
 
     AlertDialog.Builder(this)
-      .setTitle("Bạn có thực sự muốn xóa sinh viên ${currentStudent.studentName}?")
-      .setPositiveButton("Có") { _, _ ->
+      .setTitle("Do you really want to delete student ${currentStudent.studentName}?")
+      .setPositiveButton("Yes") { _, _ ->
         students.removeAt(position)
         studentAdapter.notifyItemRemoved(position)
 
         val view = findViewById<View>(R.id.recycler_view_students)
-        Snackbar.make(view, "Đã xóa sinh viên ${currentStudent.studentName}", Snackbar.LENGTH_LONG)
+        Snackbar.make(view, "Deleted ${currentStudent.studentName}", Snackbar.LENGTH_LONG)
           .setAction("Undo") {
                students.add(position, currentStudent)
             studentAdapter.notifyItemInserted(position)
           }
           .show()
       }
-      .setNegativeButton("Không", null) 
+      .setNegativeButton("No", null)
       .create()
       .show()
   }
