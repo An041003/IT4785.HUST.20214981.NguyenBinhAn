@@ -1,6 +1,5 @@
 package vn.edu.hust.studentman
 
-import android.app.ActionBar
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
+
   private val students = mutableListOf(
     StudentModel("Nguyễn Văn An", "SV001"),
     StudentModel("Trần Thị Bảo", "SV002"),
